@@ -21,3 +21,7 @@ function prompt {
     "$($ExecutionContext.SessionState.Path.CurrentLocation)> "
 }
 
+function curr {
+    $dte = [System.Runtime.InteropServices.Marshal]::GetActiveObject("VisualStudio.DTE.15.0")
+    $dte.Application.ActiveDocument.FullName
+}
