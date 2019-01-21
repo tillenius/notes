@@ -27,6 +27,20 @@ function curr {
     $dte.Application.ActiveDocument.FullName
 }
 
+function currl {
+    $dte = [System.Runtime.InteropServices.Marshal]::GetActiveObject("VisualStudio.DTE.15.0")
+    $dte.ActiveDocument.Name + ":" + $dte.ActiveDocument.Selection.CurrentLine
+}
+
+function openinvs {
+	$dte = [System.Runtime.InteropServices.Marshal]::GetActiveObject("VisualStudio.DTE.15.0")
+	$fname = $args[0].split(':')
+	$dte.ExecuteCommand("File.OpenFile", $fname[0])
+	if ($fname.length -gt 1) {
+		$dte.ActiveDocument.Selection.MoveToDisplayColumn($fname[1], 1)
+	}
+}
+
 function gitlog {
 	git log --pretty=format:"%h%x09%an%x09%ai %s" $args
 }
