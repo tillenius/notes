@@ -1,0 +1,3 @@
+# As administrator:
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
