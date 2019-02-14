@@ -94,6 +94,7 @@
 			<value name="ConWnd Width" type="dword" data="00000050"/>
 			<value name="ConWnd Height" type="dword" data="00000020"/>
 			<value name="16bit Height" type="ulong" data="0"/>
+			<value name="TabsOnTaskBar" type="hex" data="02"/>
 		</key>
 	</key>
 </key>
