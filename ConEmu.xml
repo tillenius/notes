@@ -95,6 +95,8 @@
 			<value name="ConWnd Height" type="dword" data="00000020"/>
 			<value name="16bit Height" type="ulong" data="0"/>
 			<value name="TabsOnTaskBar" type="hex" data="02"/>
+			<value name="ActivateSplitMouseOver" type="hex" data="00"/>
+			<value name="OneTabPerGroup" type="hex" data="01"/>
 		</key>
 	</key>
 </key>
