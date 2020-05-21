@@ -7,6 +7,15 @@ Set-PSReadlineKeyHandler -Key Shift+Delete -Function Cut
 Set-PSReadlineKeyHandler -Key Ctrl+Insert -Function Copy
 Set-PSReadlineOption -BellStyle None
 
+$options = Get-PSReadlineOption
+$options.CommandColor = "$([char]0x1b)[35m"
+$options.ErrorColor = "$([char]0x1b)[31m"
+$options.MemberColor = "$([char]0x1b)[32m"
+$options.NumberColor = "$([char]0x1b)[32m"
+$options.EmphasisColor = "$([char]0x1b)[34m"
+$options.SelectionColor = "$([char]0x1b)[30;106m"
+$options.StringColor = "$([char]0x1b)[34m"
+
 # Set environment variables for Visual Studio Command Prompt
 pushd "$env:VS140COMNTOOLS\..\..\vc\bin\amd64"
 cmd /c "vcvars64.bat & set" |
@@ -19,21 +28,21 @@ foreach {
 popd
 
 function prompt {
-    "$($ExecutionContext.SessionState.Path.CurrentLocation)> "
+    "$([char]0x1b)[30m$($ExecutionContext.SessionState.Path.CurrentLocation)> "
 }
 
 function curr {
-    $dte = [System.Runtime.InteropServices.Marshal]::GetActiveObject("VisualStudio.DTE.15.0")
+    $dte = [System.Runtime.InteropServices.Marshal]::GetActiveObject("VisualStudio.DTE")
     $dte.Application.ActiveDocument.FullName
 }
 
 function currl {
-    $dte = [System.Runtime.InteropServices.Marshal]::GetActiveObject("VisualStudio.DTE.15.0")
+    $dte = [System.Runtime.InteropServices.Marshal]::GetActiveObject("VisualStudio.DTE")
     $dte.ActiveDocument.Name + ":" + $dte.ActiveDocument.Selection.CurrentLine
 }
 
 function openinvs {
-	$dte = [System.Runtime.InteropServices.Marshal]::GetActiveObject("VisualStudio.DTE.15.0")
+	$dte = [System.Runtime.InteropServices.Marshal]::GetActiveObject("VisualStudio.DTE")
 	$fname = $args[0].split(':')
 	$dte.ExecuteCommand("File.OpenFile", $fname[0])
 	if ($fname.length -gt 1) {
