@@ -5,6 +5,9 @@ Set-PSReadlineKeyHandler -Key Shift+Ctrl+a -Function SelectBackwardsLine
 Set-PSReadlineKeyHandler -Key Shift+Ctrl+e -Function SelectLine
 Set-PSReadlineKeyHandler -Key Shift+Delete -Function Cut
 Set-PSReadlineKeyHandler -Key Ctrl+Insert -Function Copy
+Set-PSReadlineKeyHandler -Key Shift+UpArrow -Function HistorySearchBackward
+Set-PSReadlineKeyHandler -Key Shift+DownArrow -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Chord Shift+Spacebar -Function SelfInsert
 Set-PSReadlineOption -BellStyle None
 
 $options = Get-PSReadlineOption
